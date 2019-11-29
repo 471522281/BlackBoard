@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00016D3B-0EF6-4C54-AA14-FFEE230E27B4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Blackboard</RootNamespace>
+    <AssemblyName>Blackboard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\BlackBoard\image_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\Orientation.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ImageSourceHelper.cs" />
+    <Compile Include="Util\WindowHelper.cs" />
+    <Compile Include="Visiuals\MiniWindow.xaml.cs">
+      <DependentUpon>MiniWindow.xaml</DependentUpon>
+    </Compile>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\UIStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ArrowButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BoardCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ColorPensTool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Visiuals\BlackboardMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Converter\DragModeConverter.cs" />
+    <Compile Include="Enum\BoardOperation.cs" />
+    <Compile Include="Enum\ColorPenType.cs" />
+    <Compile Include="Enum\ColorPenSize.cs" />
+    <Compile Include="Command\CommandItem.cs" />
+    <Compile Include="Command\CommandStack.cs" />
+    <Compile Include="Core\EClassCanvas.cs" />
+    <Compile Include="Enum\EClassPenType.cs" />
+    <Compile Include="Core\ICanvas.cs" />
+    <Compile Include="Core\EClassPen.cs" />
+    <Compile Include="Core\NormalPen.cs" />
+    <Compile Include="Command\SelectionMovedOrResizedCI.cs" />
+    <Compile Include="Command\StrokesAddedOrRemovedCI.cs" />
+    <Compile Include="UserControls\ArrowButton.xaml.cs">
+      <DependentUpon>ArrowButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BoardCanvas.xaml.cs">
+      <DependentUpon>BoardCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColorPensTool.xaml.cs">
+      <DependentUpon>ColorPensTool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Util\BitmapCursor.cs" />
+    <Compile Include="Util\BoardHelper.cs" />
+    <Compile Include="Util\DesktopImage.cs" />
+    <Compile Include="Util\ScreenHelper.cs" />
+    <Compile Include="Visiuals\BlackboardMessageBox.xaml.cs">
+      <DependentUpon>BlackboardMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Visiuals\MiniWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_size_add.png" />
+    <Resource Include="Resources\ColorPen\image_pen_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_headbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_pen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_thick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_thin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_pen_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_dragmove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_turnleft.png" />
+    <Resource Include="Resources\ColorPen\image_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_turnright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ColorPen\image_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_ellipse.png" />
+    <Resource Include="Resources\BlackBoard\image_leftArrow.png" />
+    <Resource Include="Resources\BlackBoard\image_rightArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_tip_bg.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_bottom.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_left.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_leftBottom.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_leftTop.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_right.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_rightBottom.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_rightTop.png" />
+    <Resource Include="Resources\BlackBoard\image_tip_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Cursor\cursor_black.png" />
+    <Resource Include="Resources\Cursor\cursor_blue.png" />
+    <Resource Include="Resources\Cursor\cursor_green.png" />
+    <Resource Include="Resources\Cursor\cursor_red.png" />
+    <Resource Include="Resources\Cursor\cursor_white.png" />
+    <Resource Include="Resources\Cursor\cursor_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_tip_head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_btn_blue.png" />
+    <Resource Include="Resources\BlackBoard\image_btn_gray.png" />
+    <Resource Include="Resources\BlackBoard\image_btn_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_record_start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_record_pause.png" />
+    <Resource Include="Resources\BlackBoard\image_record_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_record_restart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackBoard\image_size_reduce.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

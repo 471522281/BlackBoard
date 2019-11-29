@@ -1,0 +1,109 @@
+﻿<Window x:Class="Blackboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:Blackboard.UserControls"
+        WindowStyle="None" ResizeMode="NoResize"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        UseLayoutRounding="True" 
+        ShowInTaskbar="True"
+        Title="黑板" d:DesignHeight="1080" d:DesignWidth="1920" 
+        MouseMove="Window_MouseMove" 
+        Loaded="Window_Loaded" 
+        Unloaded="Window_UnLoaded"
+        Icon="/Blackboard;component/Resources/BlackBoard/image_logo.ico">
+    <Window.Resources>
+        <ResourceDictionary Source="/Blackboard;component/Theme/UIStyle.xaml" />
+    </Window.Resources>
+    <Grid Background="#d38411">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10,10,10,10" Background="#244242">
+            <Canvas x:Name="mainCanvas">
+                <WrapPanel Canvas.Top="0" x:Name="mainPanel" Canvas.Left="0"/>
+            </Canvas>
+            <Grid Panel.ZIndex="1">
+                <uc:ArrowButton x:Name="turnLeftBtn" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Left" Visibility="Collapsed"></uc:ArrowButton>
+                <uc:ArrowButton x:Name="turnRightBtn" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Right" Visibility="Collapsed"></uc:ArrowButton>
+            </Grid>
+        </Grid>
+        <DockPanel Margin="10" Grid.Row="1">
+            <StackPanel x:Name="toolBtnArea" Orientation="Horizontal" Margin="0,0,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ControlButton}"/>
+                </StackPanel.Resources>
+                <Button ToolTip="{Binding ElementName=txtSizeAadd,Path=Content}" Click="SizeAdd_Click">
+                    <StackPanel>
+                        <Image Source="{StaticResource img_size_add}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label x:Name="txtSizeAadd" Content="放大" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Binding ElementName=txtSizeAadd,Path=Content}" Click="SizeReduce_Click">
+                    <StackPanel>
+                        <Image Source="{StaticResource img_size_reduce}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label x:Name="txtSizeReduce" Content="缩小" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Binding ElementName=txtClean,Path=Content}" Click="Clear_Click">
+                    <StackPanel>
+                        <Image Source="{StaticResource img_clean}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label x:Name="txtClean" Content="清除" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Binding ElementName=txtEraser,Path=Content}" Click="Eraser_Click">
+                    <Grid>
+                        <Image x:Name="eraserbg" Source="{StaticResource img_selbg}" Style="{StaticResource selBgStyle}" Visibility="Collapsed"></Image>
+                        <StackPanel>
+                            <Image Source="{StaticResource img_eraser}" Style="{StaticResource imgBtnStyle}"></Image>
+                            <Label x:Name="txtEraser" Content="橡皮" Style="{StaticResource labelStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button ToolTip="{Binding ElementName=txtPen,Path=Content}" Click="Pen_Click">
+                    <Grid>
+                        <Image x:Name="penbg" Source="{StaticResource img_selbg}" Style="{StaticResource selBgStyle}" Visibility="Collapsed"></Image>
+                        <StackPanel>
+                            <Image Source="{StaticResource img_pen}" Style="{StaticResource imgBtnStyle}"></Image>
+                            <Label x:Name="txtPen" Content="画笔" Style="{StaticResource labelStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button x:Name="dragBtn" ToolTip="{Binding ElementName=txtMove,Path=Content}" Click="DragMove_Click">
+                    <Grid>
+                        <Image x:Name="dragbg" Source="{StaticResource img_selbg}" Style="{StaticResource selBgStyle}" Visibility="Collapsed"></Image>
+                        <StackPanel>
+                            <Image x:Name="imgMove" Source="{StaticResource img_drag}" Style="{StaticResource imgBtnStyle}"></Image>
+                            <Label x:Name="txtMove" Content="拖动" Style="{StaticResource labelStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button x:Name="cameraBtn" ToolTip="{Binding ElementName=txtSave,Path=Content}" Click="Camera_Click">
+                    <StackPanel>
+                        <Image x:Name="imgCamera" Source="{StaticResource img_camera}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label x:Name="txtSave" Content="保存" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <uc:ColorPensTool x:Name="colorPenTool" Visibility="Collapsed" Margin="20,0,20,0"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label x:Name="questionIndex" Content="1/1" Style="{StaticResource labelStyle}" FontSize="20" VerticalAlignment="Center" Margin="10,0,10,00"></Label>
+                <Button Margin="40,0,0,0" Click="Quit_Click" Style="{StaticResource ControlButton}" ToolTip="{Binding ElementName=txtQuit,Path=Content}">
+                    <StackPanel>
+                        <Image Source="{StaticResource img_quit}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label x:Name="txtQuit" Content="退出" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="Hide_Click" Style="{StaticResource ControlButton}" ToolTip="{Binding ElementName=txtQuit,Path=Content}">
+                    <StackPanel>
+                        <Image Source="{StaticResource img_turnright}" Style="{StaticResource imgBtnStyle}"></Image>
+                        <Label Content="隐藏" Style="{StaticResource labelStyle}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Blackboard.UserControls.ArrowButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" ToolTip="上一个">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Blackboard;component/Theme/UIStyle.xaml" />
+    </UserControl.Resources>
+    <Button x:Name="btn" Style="{StaticResource arrowStyle}" Click="Exchange_Click">
+        <Grid>
+            <Image Source="{StaticResource img_ellipse}" Width="50" Height="50"></Image>
+            <Image x:Name="imgArrow" Source="{StaticResource img_leftArrow}" Width="30" Height="30"></Image>
+        </Grid>
+    </Button>
+</UserControl>

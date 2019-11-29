@@ -1,0 +1,28 @@
+﻿<Window x:Class="Blackboard.Visiuals.MiniWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="黑板" Left="0" Top="0" Background="Transparent"
+        ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" 
+        SizeToContent="Manual" ShowInTaskbar="False" Topmost="True"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary Source="/Blackboard;component/Theme/UIStyle.xaml" />
+    </Window.Resources>
+    <Canvas >
+        <TextBlock x:Name="point" Foreground="Black" Panel.ZIndex="10" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+        <Thumb x:Name="logoThumb" ToolTip="双击激活黑板"  Style="{StaticResource thumbStyle}" Canvas.Right="0" Canvas.Bottom="100"
+               MouseEnter="Thumb_MouseEnter"
+               MouseLeave="Thumb_MouseLeave"
+               DragStarted="Thumb_DragStarted"
+               DragDelta="Thumb_DragDelta"
+               DragCompleted="Thumb_DragCompleted"
+               MouseDoubleClick="Thumb_MouseDoubleClick">
+            <Thumb.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="打开黑板" Click="Open_Click"></MenuItem>
+                    <MenuItem Header="不再显示" Click="Close_Click"></MenuItem>
+                </ContextMenu>
+            </Thumb.ContextMenu>
+        </Thumb>
+    </Canvas>
+</Window>

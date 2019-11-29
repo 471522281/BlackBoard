@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Blackboard.UserControls.ColorPensTool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blackboard.UserControls"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Blackboard;component/Theme/UIStyle.xaml" />
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" Height="80">
+        <Button x:Name="whitepen" ToolTip="白色" Background="Transparent" Style="{StaticResource ControlButton}" Click="WhitePen_Click">
+            <Image Source="{StaticResource pen_white}"></Image>
+        </Button>
+        <Button x:Name="blackpen" ToolTip="黑色" Background="Transparent" Style="{StaticResource ControlButton}" Click="Black_Click">
+            <Image Source="{StaticResource pen_black}"></Image>
+        </Button>
+        <Button x:Name="redpen" ToolTip="红色" Background="Transparent" Style="{StaticResource ControlButton}" Click="Red_Click">
+            <Image Source="{StaticResource pen_red}"></Image>
+        </Button>
+        <Button x:Name="yellowpen" ToolTip="黄色" Background="Transparent" Style="{StaticResource ControlButton}" Click="Yellow_Click">
+            <Image Source="{StaticResource pen_yellow}"></Image>
+        </Button>
+        <Button x:Name="greenpen" ToolTip="绿色" Background="Transparent" Style="{StaticResource ControlButton}" Click="Green_Click">
+            <Image Source="{StaticResource pen_green}"></Image>
+        </Button>
+        <Button x:Name="bluepen" ToolTip="蓝色" Background="Transparent" Style="{StaticResource ControlButton}" Click="Blue_Click">
+            <Image Source="{StaticResource pen_blue}"></Image>
+        </Button>
+        <Image Source="{StaticResource img_line}" Margin="15,0,15,0" Height="30" Width="4"></Image>
+        <Button ToolTip="较细" Background="Transparent" Style="{StaticResource ControlButton}" Click="SelectThin_Click">
+            <Grid>
+                <Image x:Name="imgthin" Source="{StaticResource img_selbg}" Style="{StaticResource selSizeBgStyle}" Visibility="Collapsed"></Image>
+                <Image Source="{StaticResource pen_size_thin}" Width="20" Height="20"></Image>
+            </Grid>
+        </Button>
+        <Button ToolTip="标准" Background="Transparent" Style="{StaticResource ControlButton}" Click="SelectNormal_Click">
+            <Grid>
+                <Image x:Name="imgnormal" Source="{StaticResource img_selbg}" Style="{StaticResource selSizeBgStyle}" Visibility="Collapsed"></Image>
+                <Image Source="{StaticResource pen_size_normal}" Width="25" Height="25"></Image>
+            </Grid>
+        </Button>
+        <Button ToolTip="较粗" Background="Transparent" Style="{StaticResource ControlButton}" Click="SelectThick_Click">
+            <Grid>
+                <Image x:Name="imgthick" Source="{StaticResource img_selbg}" Style="{StaticResource selSizeBgStyle}" Visibility="Collapsed"></Image>
+                <Image Source="{StaticResource pen_size_thick}" Width="30" Height="30"></Image>
+            </Grid>
+        </Button>
+        <Button ToolTip="撤销" Background="Transparent" Style="{StaticResource ControlButton}" Margin="20,0,0,0" Click="Undo_Click">
+            <Image Source="{StaticResource img_turnleft}" Width="24" Height="24"></Image>
+        </Button>
+        <Button ToolTip="重做" Background="Transparent" Style="{StaticResource ControlButton}" Click="Redo_Click" Margin="10,0,0,0">
+            <Image Source="{StaticResource img_turnright}" Width="24" Height="24"></Image>
+        </Button>
+        <Image Source="{StaticResource img_line}" Margin="15,0,15,0" Height="30" Width="4"></Image>
+        <Button ToolTip="关闭" Background="Transparent" Style="{StaticResource ControlButton}" Click="Close_Click">
+            <Image Source="{StaticResource img_close}" Width="24" Height="24"></Image>
+        </Button>
+    </StackPanel>
+</UserControl>
